@@ -1,3 +1,4 @@
 target/
 .idea/
-*.imlsrc/main/resources/application.yaml
+*.iml
+src/main/resources/application.yaml
