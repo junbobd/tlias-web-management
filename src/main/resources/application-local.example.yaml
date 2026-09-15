@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/your_database
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: your_username
+    password: your_password
+
+aliyun:
+  oss:
+    accessKeyId: your_access_key_id
+    accessKeySecret: your_access_key_secret

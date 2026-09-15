@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: springboot-mybatis-quickstart
+  profiles:
+    active: local
+
+  servlet:
+    multipart:
+      #配置单个文件上传大小限制
+      max-file-size: 10MB
+      #单个请求最大大小的限制（一个请求可以上传多个文件）
+      max-request-size: 100MB
+
+#mybatis的相关配置
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+
+#自定义阿里云OSS配置信息
+aliyun:
+  oss:
+    endpoint: ${ALIYUN_OSS_ENDPOINT:https://oss-cn-hangzhou.aliyuncs.com}
+    bucketName: ${ALIYUN_OSS_BUCKET_NAME:}
