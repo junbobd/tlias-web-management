@@ -45,4 +45,8 @@ public interface EmpMapper {
     //根据用户名和密码查询员工
     @Select("select * from emp where username=#{username} and password = #{password}")
     Emp getByUsernameAndPassword(Emp emp);
+
+    //根据部门id删除员工
+    @Delete("delete from emp where dept_id=#{deptId}")
+    void deleteByDeptId(Integer deptId);
 }
