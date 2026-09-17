@@ -7,6 +7,7 @@ import com.it_study.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -28,6 +29,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     //删除部门
+    @Transactional(rollbackFor = Exception.class)//添加事务管理，并指定所有异常都会回滚
     @Override
     public void delete(Integer id) {
         deptMapper.deleteById(id);
