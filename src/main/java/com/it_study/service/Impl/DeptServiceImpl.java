@@ -23,8 +23,7 @@ public class DeptServiceImpl implements DeptService {
     private DeptMapper deptMapper;
     @Autowired
     private EmpMapper empMapper;
-    @Autowired
-    private DeptService deptService;
+
     @Autowired
     private DeptLogService deptLogService;
 
