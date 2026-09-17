@@ -3,6 +3,8 @@ package com.it_study.service.Impl;
 import com.it_study.mapper.DeptMapper;
 import com.it_study.mapper.EmpMapper;
 import com.it_study.pojo.Dept;
+import com.it_study.pojo.DeptLog;
+import com.it_study.service.DeptLogService;
 import com.it_study.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,10 @@ public class DeptServiceImpl implements DeptService {
     private DeptMapper deptMapper;
     @Autowired
     private EmpMapper empMapper;
+    @Autowired
+    private DeptService deptService;
+    @Autowired
+    private DeptLogService deptLogService;
 
     //查询部门
     @Override
@@ -32,9 +38,19 @@ public class DeptServiceImpl implements DeptService {
     @Transactional(rollbackFor = Exception.class)//添加事务管理，并指定所有异常都会回滚
     @Override
     public void delete(Integer id) {
-        deptMapper.deleteById(id);
-        //根据部门id删除员工
-        empMapper.deleteByDeptId(id);
+        try {
+            deptMapper.deleteById(id);
+            //根据部门id删除员工
+            empMapper.deleteByDeptId(id);
+
+
+        } finally {
+            DeptLog deptLog = new DeptLog();
+            deptLog.setCreateTime(LocalDateTime.now());
+            deptLog.setDescription("执行了解散部门的操作，此次解散的是"+id+"号部门");
+            deptLogService.insert(deptLog);
+        }
+
     }
 
     //新增部门
