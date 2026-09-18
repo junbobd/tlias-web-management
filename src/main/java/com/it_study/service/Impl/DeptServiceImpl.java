@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,11 +26,15 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private DeptLogService deptLogService;
 
+
+
     //查询部门
     @Override
     public List<Dept> list() {
         return deptMapper.list();
     }
+
+
 
     //删除部门
     @Transactional(rollbackFor = Exception.class)//添加事务管理，并指定所有异常都会回滚

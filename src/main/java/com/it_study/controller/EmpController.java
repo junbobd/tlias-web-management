@@ -1,5 +1,6 @@
 package com.it_study.controller;
 
+import com.it_study.anno.Log;
 import com.it_study.pojo.Emp;
 import com.it_study.pojo.PageBean;
 import com.it_study.pojo.Result;
@@ -34,6 +35,7 @@ public class EmpController {
     }
 
     //删除员工
+    @Log
     @DeleteMapping("/{ids}")
     public Result delete(@PathVariable List<Integer> ids) {
         log.info("执行批量删除操作,{}",ids);
@@ -43,6 +45,7 @@ public class EmpController {
     }
 
     //新增员工
+    @Log
     @PostMapping
     public Result save(@RequestBody Emp emp){
         log.info("增加员工，emp:{}",emp);
@@ -59,6 +62,7 @@ public class EmpController {
     }
 
     //修改数据
+    @Log
     @PutMapping
     public Result update(@RequestBody Emp emp){
         log.info("修改员工信息:{}",emp);
